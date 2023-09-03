@@ -4,14 +4,12 @@ import {
   FAILED, IDLE, LOADING, SUCCEEDED,
 } from '@/constants';
 
-const initialState = {
-  data: null,
-  status: IDLE,
-};
-
 export const createAPISlice = (name, apiAction) => createSlice({
   name,
-  initialState,
+  initialState: {
+    data: null,
+    status: IDLE,
+  },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },

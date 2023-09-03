@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import parse from 'html-react-parser';
+
 import { getPost } from '@/actions/apiActions';
 import { IDLE, LOADING } from '@/constants';
 
@@ -24,7 +26,7 @@ function Post() {
       <div>{post.data.title}</div>
       <div>{post.data.category}</div>
       <div>{post.data.created_at}</div>
-      <div>{post.data.content}</div>
+      <div>{parse(post.data.content)}</div>
     </div>
   );
 }

@@ -5,3 +5,4 @@ const axiosInstance = axios.create({
 });
 
 export const getPostAPI = async (slug) => axiosInstance.get(`posts/${slug}/`);
+export const getPostsAPI = async () => axiosInstance.get('posts/');
