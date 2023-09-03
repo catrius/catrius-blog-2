@@ -21,12 +21,14 @@ function Post() {
     );
   }
 
+  const content = post.data.content.replaceAll('src="/', `src="${process.env.REACT_APP_API_URL}/`);
+
   return (
     <div>
       <div>{post.data.title}</div>
       <div>{post.data.category}</div>
       <div>{post.data.created_at}</div>
-      <div>{parse(post.data.content)}</div>
+      <div>{parse(content)}</div>
     </div>
   );
 }
