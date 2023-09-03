@@ -1,27 +1,31 @@
+/* eslint no-param-reassign: 0 */
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  FAILED, IDLE, LOADING, SUCCEEDED,
+} from '@/constants';
 
 const initialState = {
   data: null,
-  status: 'idle',
-}
+  status: IDLE,
+};
 
-export const createAPISlice = (name, action) => createSlice({
-  name: name,
+export const createAPISlice = (name, apiAction) => createSlice({
+  name,
   initialState,
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },
   extraReducers: (builder) => {
     builder
-      .addCase(action.pending, (state) => {
-        state.status = 'loading';
+      .addCase(apiAction.pending, (state) => {
+        state.status = LOADING;
       })
-      .addCase(action.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload
+      .addCase(apiAction.fulfilled, (state, action) => {
+        state.status = SUCCEEDED;
+        state.data = action.payload;
       })
-      .addCase(action.rejected, (state, action) => {
-        state.status = 'failed';
-      })
+      .addCase(apiAction.rejected, (state) => {
+        state.status = FAILED;
+      });
   },
-})
+});

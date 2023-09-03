@@ -4,4 +4,4 @@ const axiosInstance = axios.create({
   baseURL: 'http://127.0.0.1:8000/',
 });
 
-export const getPostAPI = async (slug) => await axiosInstance.get(`posts/${slug}/`);
+export const getPostAPI = async (slug) => axiosInstance.get(`posts/${slug}/`);

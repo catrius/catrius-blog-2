@@ -1,4 +1,4 @@
 import { createAPISlice } from '@/reducers/helpers';
 import { getPost } from '@/actions/apiActions';
 
-export const postSlice = createAPISlice('post', getPost)
+export const postSlice = createAPISlice('post', getPost);
