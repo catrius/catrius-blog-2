@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container mt-5">
         <div className="row g-5">
           {posts.data.map((post) => (
             <div className="col-lg-4">
