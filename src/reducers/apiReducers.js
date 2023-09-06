@@ -1,5 +1,10 @@
 import { createAPISlice } from '@/reducers/helpers';
-import { getPost, getPosts } from '@/actions/apiActions';
+import {
+  getCategories, getcategory, getPages, getPost, getPosts,
+} from '@/actions/apiActions';
 
 export const postSlice = createAPISlice('post', getPost);
 export const postsSlice = createAPISlice('posts', getPosts);
+export const categoriesSlice = createAPISlice('posts', getCategories);
+export const categorySlice = createAPISlice('category', getcategory);
+export const pagesSlice = createAPISlice('pages', getPages);

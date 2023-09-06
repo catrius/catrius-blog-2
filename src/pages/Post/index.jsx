@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import parse from 'html-react-parser';
-
 import { getPost } from '@/actions/apiActions';
 import { IDLE, LOADING } from '@/constants';
-import dayjs from 'dayjs';
+import dayjs from '@/vendors/dayjs';
 
 function Post() {
   const { slug } = useParams();
@@ -17,9 +16,8 @@ function Post() {
   }, [dispatch, slug]);
 
   if (post.status === LOADING || post.status === IDLE) {
-    return (
-      <div>Loading</div>
-    );
+    // Todo: add loading
+    return null;
   }
 
   const content = post.data.content.replaceAll('src="/', `src="${process.env.REACT_APP_API_URL}/`);
