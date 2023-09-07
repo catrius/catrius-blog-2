@@ -1,17 +1,22 @@
-/* eslint no-param-reassign: 0 */
+/* eslint no-param-reassign: off */
 import { createSlice } from '@reduxjs/toolkit';
 import {
   FAILED, IDLE, LOADING, SUCCEEDED,
 } from '@/constants';
 
+const initialState = {
+  data: null,
+  status: IDLE,
+};
+
 export const createAPISlice = (name, apiAction) => createSlice({
   name,
-  initialState: {
-    data: null,
-    status: IDLE,
-  },
+  initialState,
   reducers: {
-    // standard reducer logic, with auto-generated action types per reducer
+    clear(state) {
+      state.data = initialState.data;
+      state.status = initialState.status;
+    },
   },
   extraReducers: (builder) => {
     builder
