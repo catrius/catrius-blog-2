@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 function Footer() {
   return (
     <footer className="py-5 border-top mt-5">
-      <div className="container">
+      <Container>
         <div className="row justify-content-center">
           <div className="col-lg-7 text-center">
             <p className="text-muted">
@@ -11,7 +12,7 @@ function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

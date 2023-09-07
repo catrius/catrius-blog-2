@@ -4,6 +4,7 @@ import { IDLE, LOADING } from '@/constants';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import PostList from '@/components/PostList';
+import { Container } from 'react-bootstrap';
 
 function PostDetail({ post, status }) {
   if (status === LOADING || status === IDLE) {
@@ -14,7 +15,7 @@ function PostDetail({ post, status }) {
   const content = post.content.replaceAll('src="/', `src="${process.env.REACT_APP_API_URL}/`);
 
   return (
-    <div className="container mt-5">
+    <Container className="mt-5">
       <div className="row justify-content-center">
         <div className="col-lg-8">
           <h2 className="text-center">{post.title}</h2>
@@ -32,7 +33,7 @@ function PostDetail({ post, status }) {
           <div>{parse(content)}</div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
+import { Container } from 'react-bootstrap';
 
 function PostList({ posts, status }) {
   if (status === LOADING || status === IDLE) {
@@ -12,7 +13,7 @@ function PostList({ posts, status }) {
   }
 
   return (
-    <div className="container mt-5">
+    <Container className="mt-5">
       <div className="row g-5">
         {posts.map((post) => (
           <div className="col-lg-4" key={post.slug}>
@@ -45,7 +46,7 @@ function PostList({ posts, status }) {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 
