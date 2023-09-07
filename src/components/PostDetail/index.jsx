@@ -3,7 +3,6 @@ import parse from 'html-react-parser';
 import { IDLE, LOADING } from '@/constants';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
-import PostList from '@/components/PostList';
 import { Container } from 'react-bootstrap';
 
 function PostDetail({ post, status }) {
@@ -44,11 +43,11 @@ PostDetail.propTypes = {
     category: PropTypes.string,
     created_at: PropTypes.string,
     content: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
-PostList.defaultProps = {
-  post: null,
+PostDetail.defaultProps = {
+  post: {},
 };
 
 export default PostDetail;

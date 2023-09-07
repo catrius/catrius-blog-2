@@ -6,6 +6,7 @@ import store from '@/store';
 import routes from '@/routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '@/components/Layout';
+import '@/styles.scss';
 
 const router = createBrowserRouter([
   {
