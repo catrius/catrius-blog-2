@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPosts(page));
-  }, [dispatch, page]);
+  }, [page]);
 
   return (
     <PostList posts={posts.data?.results} status={posts.status} pageCount={pageCount} />

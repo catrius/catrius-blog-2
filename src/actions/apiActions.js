@@ -29,8 +29,8 @@ export const getCategories = createAsyncThunk(
 
 export const getcategory = createAsyncThunk(
   'getcategory',
-  async (slug) => {
-    const response = await getcategoryAPI(slug);
+  async (slug, page) => {
+    const response = await getcategoryAPI(slug, page);
     return response.data;
   },
 );

@@ -15,7 +15,7 @@ function Page() {
     return () => {
       dispatch(pageSlice.actions.clear());
     };
-  }, [dispatch, slug]);
+  }, [slug]);
 
   return (
     <PostDetail status={page.status} post={page.data} />

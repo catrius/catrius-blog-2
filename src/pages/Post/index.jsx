@@ -11,7 +11,7 @@ function Post() {
 
   useEffect(() => {
     dispatch(getPost(slug));
-  }, [dispatch, slug]);
+  }, [slug]);
 
   return (
     <PostDetail status={post.status} post={post.data} />

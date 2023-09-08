@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories, getPages } from '@/actions/apiActions';
 import {
@@ -7,18 +7,20 @@ import {
 } from 'react-bootstrap';
 import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
 import NavbarToggle from 'react-bootstrap/NavbarToggle';
+import './style.scss';
+import { CATEGORY, PAGE } from '@/constants';
 
 function Header() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const pages = useSelector((state) => state.pages);
-  const currentCategory = useSelector((state) => state.category);
-  const currentPage = useSelector((state) => state.page);
+  const matchedCategory = useMatch(CATEGORY);
+  const matchedPage = useMatch(PAGE);
 
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getPages());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Navbar className="pt-3 pb-3 border-bottom" expand="lg" variant="light">
@@ -31,7 +33,7 @@ function Header() {
                 <NavLink
                   as={Link}
                   to={`/category/${category.slug}`}
-                  active={category.slug === currentCategory.data?.slug}
+                  active={matchedCategory && category.slug === matchedCategory.params.slug}
                 >
                   {category.name}
                 </NavLink>
@@ -56,7 +58,7 @@ function Header() {
                 <NavLink
                   as={Link}
                   to={`/page/${page.slug}`}
-                  active={page.slug === currentPage.data?.slug}
+                  active={matchedPage && page.slug === matchedPage.params.slug}
                 >
                   {page.title}
                 </NavLink>

@@ -3,12 +3,15 @@ import Home from '@/pages/Home';
 import Post from '@/pages/Post';
 import Category from '@/pages/Category';
 import Page from '@/pages/Page';
+import {
+  CATEGORY, HOME, PAGE, POST,
+} from '@/constants';
 
 const routes = [
-  { path: '/', element: <Home /> },
-  { path: '/post/:slug', element: <Post /> },
-  { path: '/category/:slug', element: <Category /> },
-  { path: '/page/:slug', element: <Page /> },
+  { path: HOME, element: <Home /> },
+  { path: POST, element: <Post /> },
+  { path: CATEGORY, element: <Category /> },
+  { path: PAGE, element: <Page /> },
 ];
 
 export default routes;
