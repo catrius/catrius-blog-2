@@ -2,6 +2,7 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './style.scss';
 
 function Pagination({ page, pageCount }) {
   const navigate = useNavigate();
@@ -19,16 +20,17 @@ function Pagination({ page, pageCount }) {
       pageRangeDisplayed={3}
       pageCount={pageCount}
       renderOnZeroPageCount={null}
-      pageClassName="page-item"
-      pageLinkClassName="page-link"
+      pageClassName="page-item text-muted"
+      pageLinkClassName="page-link text-muted"
       previousClassName="page-item"
-      previousLinkClassName="page-link"
+      previousLinkClassName="page-link text-muted"
       nextClassName="page-item"
       nextLinkClassName="page-link"
       breakClassName="page-item"
-      breakLinkClassName="page-link"
+      breakLinkClassName="page-link text-muted"
       containerClassName="pagination justify-content-center mt-5"
       activeClassName="active"
+      activeLinkClassName="bg-secondary border-secondary text-light"
       forcePage={page ? page - 1 : 0}
     />
   );

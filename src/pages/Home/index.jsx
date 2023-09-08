@@ -10,7 +10,7 @@ function Home() {
   const posts = useSelector((state) => state.posts);
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
-  const pageCount = posts.data ? Math.ceil(posts.data.count / PAGE_SIZE) : 1;
+  const pageCount = posts.data ? Math.ceil(posts.data.count / PAGE_SIZE) : 0;
 
   useEffect(() => {
     dispatch(getPosts(page));
