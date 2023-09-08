@@ -26,7 +26,7 @@ function Header() {
         <NavbarToggle className="position-relative top-0 left-0" />
         <NavbarCollapse className="w-100 order-1 order-md-0">
           <Nav className="me-auto">
-            {categories.data?.map((category) => (
+            {categories.data?.results.map((category) => (
               <NavItem key={category.slug}>
                 <NavLink
                   as={Link}
@@ -51,7 +51,7 @@ function Header() {
         </div>
         <NavbarCollapse className="w-100 order-3">
           <Nav className="ms-auto">
-            {pages.data?.map((page) => (
+            {pages.data?.results.map((page) => (
               <NavItem key={page.slug}>
                 <NavLink
                   as={Link}

@@ -1,12 +1,16 @@
 import React from 'react';
 import { IDLE, LOADING } from '@/constants';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
+import Pagination from '@/components/Pagination';
 
-function PostList({ posts, status }) {
+function PostList({ posts, status, pageCount }) {
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page');
+
   if (status === LOADING || status === IDLE) {
     // Todo: add loading
     return null;
@@ -46,6 +50,7 @@ function PostList({ posts, status }) {
           </div>
         ))}
       </div>
+      <Pagination page={Number(page)} pageCount={pageCount} />
     </Container>
   );
 }
@@ -59,10 +64,12 @@ PostList.propTypes = {
     created_at: PropTypes.string,
     excerpt: PropTypes.string,
   })),
+  pageCount: PropTypes.number,
 };
 
 PostList.defaultProps = {
   posts: [],
+  pageCount: 1,
 };
 
 export default PostList;

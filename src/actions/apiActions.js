@@ -5,8 +5,8 @@ import {
 
 export const getPosts = createAsyncThunk(
   'getPosts',
-  async () => {
-    const response = await getPostsAPI();
+  async (page) => {
+    const response = await getPostsAPI(page);
     return response.data;
   },
 );
