@@ -17,8 +17,8 @@ function PostDetail({ post, status }) {
     <Container className="mt-5">
       <div className="row justify-content-center">
         <div className="col-lg-8">
-          <h2 className="text-center">{post.title}</h2>
-          <div className="mb-5 text-center">
+          <h2>{post.title}</h2>
+          <div className="mb-5">
             {post.category && (
               <>
                 <span className="fw-semibold">{post.category}</span>
