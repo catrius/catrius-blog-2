@@ -6,6 +6,7 @@ import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import Pagination from '@/components/Pagination';
+import './style.scss';
 
 function PostList({ posts, status, pageCount }) {
   const [searchParams] = useSearchParams();
@@ -17,14 +18,14 @@ function PostList({ posts, status, pageCount }) {
   }
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 post-list">
       <div className="row g-5">
         {posts.map((post) => (
           <div className="col-lg-4" key={post.slug}>
             <div className="d-block">
               <Link to={`/post/${post.slug}`} className="mb-4 d-block">
                 <Image
-                  className="object-fit-cover img-fluid"
+                  className="object-fit-cover"
                   src={post.thumbnail}
                   alt="thumbnail"
                   rounded
