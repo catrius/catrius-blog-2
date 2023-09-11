@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '@/actions/apiActions';
 import PostList from '@/components/PostList';
 import { useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '@/constants';
+import PostHighlight from '@/components/PostHighlight';
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,7 +18,11 @@ function Home() {
   }, [page]);
 
   return (
-    <PostList posts={posts.data?.results} status={posts.status} pageCount={pageCount} />
+    <>
+      <PostHighlight />
+      <PostList posts={posts.data?.results} status={posts.status} pageCount={pageCount} />
+    </>
+
   );
 }
 
