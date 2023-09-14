@@ -24,10 +24,11 @@ function PostList({ posts, status, pageCount }) {
             <div className="d-block">
               <Link to={`/post/${post.slug}`} className="mb-4 d-block text-center">
                 <Image
-                  className="object-fit-cover img-fluid"
+                  className="object-fit-cover"
                   src={post.thumbnail}
                   alt="thumbnail"
                   rounded
+                  fluid
                 />
               </Link>
               <div className="mb-1">

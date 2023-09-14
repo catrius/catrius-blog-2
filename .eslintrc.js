@@ -23,6 +23,8 @@ module.exports = {
   },
   rules: {
     'import/prefer-default-export': 'off',
+    'max-len': ['error', { code: 120 }],
+    'import/no-extraneous-dependencies': 'off',
   },
   settings: {
     'import/resolver': {

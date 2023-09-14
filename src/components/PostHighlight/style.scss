@@ -1,0 +1,32 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.post-highlight {
+  .thumbnail {
+    flex: 0 0 440px;
+  }
+
+  .carousel {
+    &.carousel-slider {
+      overflow: visible;
+    }
+
+    .slide {
+      text-align: left;
+    }
+
+    .control-dots {
+      bottom: -50px;
+
+      .dot {
+        box-shadow: none;
+        background-color: $text-muted;
+
+        &.selected {
+          background-color: #f79918;
+        }
+      }
+    }
+  }
+}

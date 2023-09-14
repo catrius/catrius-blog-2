@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getcategory } from '@/actions/apiActions';
+import { getCategory } from '@/actions/apiActions';
 import PostList from '@/components/PostList';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '@/constants';
@@ -14,7 +14,7 @@ function Category() {
   const pageCount = category.data ? Math.ceil(category.data.count / PAGE_SIZE) : 0;
 
   useEffect(() => {
-    dispatch(getcategory(slug, page));
+    dispatch(getCategory(slug, page));
   }, [slug, page]);
 
   return (
