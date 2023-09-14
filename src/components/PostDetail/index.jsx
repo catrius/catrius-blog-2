@@ -4,6 +4,7 @@ import { IDLE, LOADING } from '@/constants';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function PostDetail({ post, status }) {
   if (status === LOADING || status === IDLE) {
@@ -19,12 +20,16 @@ function PostDetail({ post, status }) {
         <div className="col-lg-8">
           <h2>{post.title}</h2>
           <div className="mb-5">
-            {post.category && (
+            {post.category.name && (
               <>
-                <span className="fw-semibold">{post.category}</span>
-                {' '}
+                <Link
+                  to={`/category/${post.category.slug}`}
+                  className="fw-semibold text-decoration-none text-muted"
+                >
+                  {post.category.name}
+                </Link>
                 <span className="text-muted">
-                  {`— ${dayjs(post.created_at).format('LL')}`}
+                  {` — ${dayjs(post.created_at).format('LL')}`}
                 </span>
               </>
             )}

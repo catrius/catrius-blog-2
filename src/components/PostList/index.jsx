@@ -32,10 +32,14 @@ function PostList({ posts, status, pageCount }) {
                 />
               </Link>
               <div className="mb-1">
-                <span className="fw-semibold">{post.category}</span>
-                {' '}
+                <Link
+                  to={`/category/${post.category.slug}`}
+                  className="fw-semibold text-decoration-none text-muted"
+                >
+                  {post.category.name}
+                </Link>
                 <span className="text-muted">
-                  {`— ${dayjs(post.created_at).format('LL')}`}
+                  {` — ${dayjs(post.created_at).format('LL')}`}
                 </span>
               </div>
               <Link

@@ -21,7 +21,7 @@ function PostHighlight() {
     <div className="post-highlight section pt-5 pb-0">
       <Container>
         <Row className="justify-content-center mb-5">
-          <h2 className="col-lg-7 text-center">Highlights</h2>
+          <h2 className="text-center">Highlights</h2>
         </Row>
         <Carousel showStatus={false} autoPlay infiniteLoop>
           {highlightPosts.data?.results.map((post) => (
@@ -35,10 +35,14 @@ function PostHighlight() {
                   </div>
                   <div className="align-self-center">
                     <div className="mb-3">
-                      <span className="fw-semibold">{post.category}</span>
-                      {' '}
+                      <Link
+                        to={`/category/${post.category.slug}`}
+                        className="fw-semibold text-decoration-none text-muted"
+                      >
+                        {post.category.name}
+                      </Link>
                       <span className="text-muted">
-                        {`— ${dayjs(post.created_at).format('LL')}`}
+                        {` — ${dayjs(post.created_at).format('LL')}`}
                       </span>
                     </div>
                     <h2>
