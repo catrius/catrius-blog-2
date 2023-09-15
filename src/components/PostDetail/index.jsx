@@ -20,7 +20,7 @@ function PostDetail({ post, status }) {
         <div className="col-lg-8">
           <h2>{post.title}</h2>
           <div className="mb-5">
-            {post.category.name && (
+            {post.category?.name && (
               <>
                 <Link
                   to={`/category/${post.category.slug}`}
@@ -45,7 +45,10 @@ PostDetail.propTypes = {
   status: PropTypes.string.isRequired,
   post: PropTypes.shape({
     title: PropTypes.string,
-    category: PropTypes.string,
+    category: PropTypes.shape({
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    }),
     created_at: PropTypes.string,
     content: PropTypes.string,
   }),

@@ -65,7 +65,10 @@ PostList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     slug: PropTypes.string,
     thumbnail: PropTypes.string,
-    category: PropTypes.string,
+    category: PropTypes.shape({
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    }),
     created_at: PropTypes.string,
     excerpt: PropTypes.string,
   })),

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPost } from '@/actions/apiActions';
 import PostDetail from '@/components/PostDetail';
+import { Helmet } from 'react-helmet';
 
 function Post() {
   const { slug } = useParams();
@@ -14,7 +15,12 @@ function Post() {
   }, [slug]);
 
   return (
-    <PostDetail status={post.status} post={post.data} />
+    <>
+      <Helmet>
+        <title>{post.data?.title}</title>
+      </Helmet>
+      <PostDetail status={post.status} post={post.data} />
+    </>
   );
 }
 

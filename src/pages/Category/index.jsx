@@ -4,6 +4,7 @@ import { getCategory } from '@/actions/apiActions';
 import PostList from '@/components/PostList';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '@/constants';
+import { Helmet } from 'react-helmet';
 
 function Category() {
   const { slug } = useParams();
@@ -18,7 +19,12 @@ function Category() {
   }, [slug, page]);
 
   return (
-    <PostList posts={category.data?.results} status={category.status} pageCount={pageCount} />
+    <>
+      <Helmet>
+        <title>{category.data?.results[0].category.name}</title>
+      </Helmet>
+      <PostList posts={category.data?.results} status={category.status} pageCount={pageCount} />
+    </>
   );
 }
 

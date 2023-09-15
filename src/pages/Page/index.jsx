@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPage } from '@/actions/apiActions';
 import PostDetail from '@/components/PostDetail';
 import { pageSlice } from '@/reducers/apiReducers';
+import { Helmet } from 'react-helmet';
 
 function Page() {
   const { slug } = useParams();
@@ -18,7 +19,12 @@ function Page() {
   }, [slug]);
 
   return (
-    <PostDetail status={page.status} post={page.data} />
+    <>
+      <Helmet>
+        <title>{page.data?.title}</title>
+      </Helmet>
+      <PostDetail status={page.status} post={page.data} />
+    </>
   );
 }
 

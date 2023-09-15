@@ -23,16 +23,14 @@ function PostHighlight() {
         <Row className="justify-content-center mb-5">
           <h2 className="text-center">Highlights</h2>
         </Row>
-        <Carousel showStatus={false} autoPlay infiniteLoop>
+        <Carousel showStatus={false} autoPlay infiniteLoop showThumbs={false} showArrows={false}>
           {highlightPosts.data?.results.map((post) => (
-            <Row>
+            <Row key={post.slug}>
               <Col lg={12}>
                 <div className="d-lg-flex">
-                  <div className="me-lg-5 thumbnail mb-4 mb-lg-0">
-                    <Link to={`/post/${post.slug}`}>
-                      <Image src={post.thumbnail} fluid />
-                    </Link>
-                  </div>
+                  <Link to={`/post/${post.slug}`} className="me-lg-5 thumbnail mb-4 mb-lg-0">
+                    <Image src={post.thumbnail} fluid />
+                  </Link>
                   <div className="align-self-center">
                     <div className="mb-3">
                       <Link

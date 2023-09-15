@@ -18,6 +18,7 @@
 
     .control-dots {
       bottom: -50px;
+      margin-bottom: map-get($spacers, 5);
 
       .dot {
         box-shadow: none;
