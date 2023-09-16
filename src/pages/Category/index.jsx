@@ -12,7 +12,7 @@ function Category() {
   const category = useSelector((state) => state.category);
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
-  const pageCount = category.data ? Math.ceil(category.data.count / PAGE_SIZE) : 0;
+  const pageCount = category.data ? Math.ceil(category.data.count / PAGE_SIZE) : 1;
 
   useEffect(() => {
     dispatch(getCategory({ category: slug, page }));

@@ -4,17 +4,24 @@ import PropTypes from 'prop-types';
 import { getComments } from '@/actions/apiActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentsSlice } from '@/reducers/apiReducers';
+import Pagination from '@/components/Pagination';
+import { useSearchParams } from 'react-router-dom';
+import { PAGE_SIZE } from '@/constants';
 
 function CommentList({ postSlug }) {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments);
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page');
+  const pageCount = comments.data ? Math.ceil(comments.data.count / PAGE_SIZE) : 1;
 
   useEffect(() => {
-    dispatch(getComments({ post: postSlug }));
-    return () => {
-      dispatch(commentsSlice.actions.clear());
-    };
-  }, [postSlug]);
+    dispatch(getComments({ post: postSlug, page }));
+  }, [postSlug, page]);
+
+  useEffect(() => () => {
+    dispatch(commentsSlice.actions.clear());
+  }, []);
 
   return (
     <div className="mb-4 border-bottom">
@@ -30,6 +37,7 @@ function CommentList({ postSlug }) {
           <p>{comment.content}</p>
         </div>
       ))}
+      <Pagination page={Number(page)} pageCount={pageCount} />
     </div>
   );
 }

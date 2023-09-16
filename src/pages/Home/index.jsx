@@ -11,7 +11,7 @@ function Home() {
   const posts = useSelector((state) => state.posts);
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
-  const pageCount = posts.data ? Math.ceil(posts.data.count / PAGE_SIZE) : 0;
+  const pageCount = posts.data ? Math.ceil(posts.data.count / PAGE_SIZE) : 1;
 
   useEffect(() => {
     dispatch(getPosts(page));
@@ -22,7 +22,6 @@ function Home() {
       <PostHighlight />
       <PostList posts={posts.data?.results} status={posts.status} pageCount={pageCount} />
     </>
-
   );
 }
 
