@@ -12,15 +12,13 @@ function PostDetail({ post, status }) {
     return null;
   }
 
-  const content = post.content.replaceAll('src="/', `src="${process.env.REACT_APP_API_URL}/`);
-
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col lg={8}>
           <h2>{post.title}</h2>
-          <div className="mb-5">
-            {post.category?.name && (
+          <div className="mb-4">
+            {post.category && (
               <>
                 <Link
                   to={`/category/${post.category.slug}`}
@@ -34,7 +32,21 @@ function PostDetail({ post, status }) {
               </>
             )}
           </div>
-          <div>{parse(content)}</div>
+          <div className="mb-4 pb-4 border-bottom">{parse(post.content)}</div>
+          <div>
+            <h4 className="mb-4">
+              {`${post.comments?.length || 0} Comments`}
+            </h4>
+            {post.comments.map((comment) => (
+              <div className="mb-5">
+                <h5>{comment.commenter}</h5>
+                <p className="text-muted mb-3">
+                  {dayjs(comment.created_at).format('LL')}
+                </p>
+                <p>{comment.content}</p>
+              </div>
+            ))}
+          </div>
         </Col>
       </Row>
     </Container>
@@ -51,6 +63,11 @@ PostDetail.propTypes = {
     }),
     created_at: PropTypes.string,
     content: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      commenter: PropTypes.string,
+      content: PropTypes.string,
+      updated_at: PropTypes.string,
+    })),
   }),
 };
 
