@@ -9,3 +9,4 @@ export const getPostAPI = async (slug) => axiosInstance.get(`posts/${slug}/`);
 export const getCategoriesAPI = async () => axiosInstance.get('categories/');
 export const getPagesAPI = async () => axiosInstance.get('pages/');
 export const getPageAPI = async (slug) => axiosInstance.get(`pages/${slug}/`);
+export const postCommentAPI = async (params) => axiosInstance.post('comments/', params);

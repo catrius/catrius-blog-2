@@ -23,7 +23,7 @@ function Page() {
       <Helmet>
         <title>{page.data?.title}</title>
       </Helmet>
-      <PostDetail status={page.status} post={page.data} />
+      <PostDetail status={page.status} post={page.data} isPost={false} />
     </>
   );
 }

@@ -25,7 +25,7 @@ function PostHighlight() {
         </Row>
         <Carousel showStatus={false} autoPlay infiniteLoop showThumbs={false} showArrows={false}>
           {highlightPosts.data?.results.map((post) => (
-            <Row>
+            <Row key={post.slug}>
               <Col md={4}>
                 <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-md-0">
                   <Image

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  getPostAPI, getPostsAPI, getCategoriesAPI, getPagesAPI, getPageAPI,
+  getPostAPI, getPostsAPI, getCategoriesAPI, getPagesAPI, getPageAPI, postCommentAPI,
 } from '@/api';
 
 export const getPosts = createAsyncThunk(
@@ -55,6 +55,14 @@ export const getHighlightPosts = createAsyncThunk(
   'getHighlightPosts',
   async () => {
     const response = await getPostsAPI({ highlight: true });
+    return response.data;
+  },
+);
+
+export const postComment = createAsyncThunk(
+  'postComment',
+  async (params) => {
+    const response = await postCommentAPI(params);
     return response.data;
   },
 );
