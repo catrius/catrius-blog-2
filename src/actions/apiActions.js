@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  getPostAPI, getPostsAPI, getCategoriesAPI, getPagesAPI, getPageAPI, postCommentAPI,
+  getPostAPI, getPostsAPI, getCategoriesAPI, getPagesAPI, getPageAPI, postCommentAPI, getCommentsAPI,
 } from '@/api';
 
 export const getPosts = createAsyncThunk(
@@ -29,8 +29,8 @@ export const getCategories = createAsyncThunk(
 
 export const getCategory = createAsyncThunk(
   'getCategory',
-  async (slug, page) => {
-    const response = await getPostsAPI({ category: slug, page });
+  async (params) => {
+    const response = await getPostsAPI(params);
     return response.data;
   },
 );
@@ -63,6 +63,14 @@ export const postComment = createAsyncThunk(
   'postComment',
   async (params) => {
     const response = await postCommentAPI(params);
+    return response.data;
+  },
+);
+
+export const getComments = createAsyncThunk(
+  'getComments',
+  async (params) => {
+    const response = await getCommentsAPI(params);
     return response.data;
   },
 );

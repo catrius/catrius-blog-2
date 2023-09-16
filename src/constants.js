@@ -31,5 +31,4 @@ export const POST_PROPTYPES = PropTypes.shape({
   }),
   created_at: PropTypes.string,
   content: PropTypes.string,
-  comments: PropTypes.arrayOf(COMMENT_PROPTYPES),
 });

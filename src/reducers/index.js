@@ -1,6 +1,14 @@
 import { combineReducers } from 'redux';
 import {
-  categoriesSlice, postSlice, postsSlice, pagesSlice, categorySlice, pageSlice, highlightPostsSlice, postCommentSlice,
+  categoriesSlice,
+  postSlice,
+  postsSlice,
+  pagesSlice,
+  categorySlice,
+  pageSlice,
+  highlightPostsSlice,
+  postCommentSlice,
+  commentsSlice,
 } from '@/reducers/apiReducers';
 
 export default combineReducers({
@@ -12,4 +20,5 @@ export default combineReducers({
   page: pageSlice.reducer,
   highlightPosts: highlightPostsSlice.reducer,
   comment: postCommentSlice.reducer,
+  comments: commentsSlice.reducer,
 });

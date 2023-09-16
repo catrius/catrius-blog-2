@@ -19,8 +19,8 @@ function PostDetail({ post, status, isPost }) {
       <Row className="justify-content-center">
         <Col lg={8}>
           <PostContent post={post} isPost={isPost} />
-          { isPost && <CommentList comments={post.comments} />}
-          { isPost && <CommentForm postId={post.id} />}
+          { isPost && <CommentList postSlug={post.slug} />}
+          { isPost && <CommentForm postId={post.id} postSlug={post.slug} />}
         </Col>
       </Row>
     </Container>

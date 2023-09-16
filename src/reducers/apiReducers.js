@@ -1,6 +1,6 @@
 import { createAPISlice } from '@/reducers/helpers';
 import {
-  getCategories, getCategory, getPages, getPost, getPosts, getPage, getHighlightPosts, postComment,
+  getCategories, getCategory, getPages, getPost, getPosts, getPage, getHighlightPosts, postComment, getComments,
 } from '@/actions/apiActions';
 
 export const postSlice = createAPISlice('post', getPost);
@@ -10,4 +10,5 @@ export const categorySlice = createAPISlice('category', getCategory);
 export const pagesSlice = createAPISlice('pages', getPages);
 export const pageSlice = createAPISlice('page', getPage);
 export const highlightPostsSlice = createAPISlice('highlightPosts', getHighlightPosts);
+export const commentsSlice = createAPISlice('comment', getComments);
 export const postCommentSlice = createAPISlice('postComment', postComment);

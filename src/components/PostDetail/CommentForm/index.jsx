@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPost, postComment } from '@/actions/apiActions';
+import { getComments, postComment } from '@/actions/apiActions';
 import {
   FAILED, IDLE, LOADING, SUCCEEDED,
 } from '@/constants';
 import { postCommentSlice } from '@/reducers/apiReducers';
-import { useParams } from 'react-router-dom';
 
-function CommentForm({ postId }) {
+function CommentForm({ postId, postSlug }) {
   const dispatch = useDispatch();
-  const { slug } = useParams();
   const [validated, setValidated] = useState(false);
   const comment = useSelector((state) => state.comment);
   const submitButtonText = {
@@ -49,7 +47,7 @@ function CommentForm({ postId }) {
 
   useEffect(() => {
     if (comment.status === SUCCEEDED) {
-      dispatch(getPost(slug));
+      dispatch(getComments({ post: postSlug }));
     }
   }, [comment.status]);
 
@@ -100,10 +98,12 @@ function CommentForm({ postId }) {
 
 CommentForm.propTypes = {
   postId: PropTypes.number,
+  postSlug: PropTypes.string,
 };
 
 CommentForm.defaultProps = {
   postId: null,
+  postSlug: null,
 };
 
 export default CommentForm;
