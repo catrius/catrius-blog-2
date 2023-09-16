@@ -27,8 +27,14 @@ function PostHighlight() {
           {highlightPosts.data?.results.map((post) => (
             <Row>
               <Col md={4}>
-                <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-lg-0">
-                  <Image src={post.thumbnail} fluid />
+                <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-md-0">
+                  <Image
+                    className="object-fit-cover d-block"
+                    src={post.thumbnail}
+                    alt="thumbnail"
+                    rounded
+                    fluid
+                  />
                 </Link>
               </Col>
               <Col md={8} className="align-self-center">
