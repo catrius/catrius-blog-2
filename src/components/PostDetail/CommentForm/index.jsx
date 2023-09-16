@@ -87,7 +87,7 @@ function CommentForm({ postId, postSlug }) {
           </Form.Control.Feedback>
         </Form.Group>
         <div className="text-end">
-          <Button variant="primary" type="submit">
+          <Button variant="secondary" type="submit">
             {submitButtonText[comment.status]}
           </Button>
         </div>
