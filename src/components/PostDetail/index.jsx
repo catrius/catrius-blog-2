@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import { IDLE, LOADING } from '@/constants';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function PostDetail({ post, status }) {
@@ -16,8 +16,8 @@ function PostDetail({ post, status }) {
 
   return (
     <Container className="mt-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
+      <Row className="justify-content-center">
+        <Col lg={8}>
           <h2>{post.title}</h2>
           <div className="mb-5">
             {post.category?.name && (
@@ -35,8 +35,8 @@ function PostDetail({ post, status }) {
             )}
           </div>
           <div>{parse(content)}</div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Container>
   );
 }

@@ -26,12 +26,14 @@ function PostHighlight() {
         <Carousel showStatus={false} autoPlay infiniteLoop showThumbs={false} showArrows={false}>
           {highlightPosts.data?.results.map((post) => (
             <Row key={post.slug}>
-              <Col lg={12}>
-                <div className="d-lg-flex">
-                  <Link to={`/post/${post.slug}`} className="me-lg-5 thumbnail mb-4 mb-lg-0">
-                    <Image src={post.thumbnail} fluid />
-                  </Link>
-                  <div className="align-self-center">
+              <Col md={12}>
+                <Row>
+                  <Col md={4}>
+                    <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-lg-0">
+                      <Image src={post.thumbnail} fluid />
+                    </Link>
+                  </Col>
+                  <Col md={8} className="align-self-center">
                     <div className="mb-3">
                       <Link
                         to={`/category/${post.category.slug}`}
@@ -47,8 +49,8 @@ function PostHighlight() {
                       <Link to={`/post/${post.slug}`} className="text-decoration-none text-dark">{post.title}</Link>
                     </h2>
                     <p className="text-muted">{post.excerpt}</p>
-                  </div>
-                </div>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           ))}

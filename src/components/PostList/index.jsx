@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import Pagination from '@/components/Pagination';
 
 function PostList({ posts, status, pageCount }) {
@@ -18,9 +18,9 @@ function PostList({ posts, status, pageCount }) {
 
   return (
     <Container className="mt-5 post-list">
-      <div className="row g-5">
+      <Row className="g-5">
         {posts.map((post) => (
-          <div className="col-lg-4" key={post.slug}>
+          <Col lg={4} md={6} key={post.slug}>
             <div className="d-block">
               <Link to={`/post/${post.slug}`} className="mb-4 d-block text-center">
                 <Image
@@ -52,9 +52,9 @@ function PostList({ posts, status, pageCount }) {
                 {post.excerpt}
               </p>
             </div>
-          </div>
+          </Col>
         ))}
-      </div>
+      </Row>
       <Pagination page={Number(page)} pageCount={pageCount} />
     </Container>
   );
