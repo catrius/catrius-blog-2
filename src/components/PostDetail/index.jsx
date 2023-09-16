@@ -5,12 +5,14 @@ import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 function PostDetail({ post, status }) {
   if (status === LOADING || status === IDLE) {
     // Todo: add loading
     return null;
   }
+  const isPost = Boolean(post.category);
 
   return (
     <Container className="mt-5">
@@ -18,7 +20,7 @@ function PostDetail({ post, status }) {
         <Col lg={8}>
           <h2>{post.title}</h2>
           <div className="mb-4">
-            {post.category && (
+            { isPost && (
               <>
                 <Link
                   to={`/category/${post.category.slug}`}
@@ -32,21 +34,25 @@ function PostDetail({ post, status }) {
               </>
             )}
           </div>
-          <div className="mb-4 pb-4 border-bottom">{parse(post.content)}</div>
-          <div>
-            <h4 className="mb-4">
-              {`${post.comments?.length || 0} Comments`}
-            </h4>
-            {post.comments.map((comment) => (
-              <div className="mb-5">
-                <h5>{comment.commenter}</h5>
-                <p className="text-muted mb-3">
-                  {dayjs(comment.created_at).format('LL')}
-                </p>
-                <p>{comment.content}</p>
-              </div>
-            ))}
+          <div className={classnames('mb-4 pb-4', { 'border-bottom': isPost })}>
+            { parse(post.content) }
           </div>
+          { isPost && (
+            <div>
+              <h4 className="mb-4">
+                {`${post.comments?.length || 0} Comments`}
+              </h4>
+              {post.comments.map((comment) => (
+                <div className="mb-5">
+                  <h5>{comment.commenter}</h5>
+                  <p className="text-muted mb-3">
+                    {dayjs(comment.created_at).format('LL')}
+                  </p>
+                  <p>{comment.content}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </Col>
       </Row>
     </Container>
