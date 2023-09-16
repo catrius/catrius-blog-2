@@ -24,7 +24,7 @@ function CommentList({ postSlug }) {
   }, []);
 
   return (
-    <div className="mb-4 border-bottom">
+    <div className="mb-4 pb-4 border-bottom">
       <h4 className="mb-4">
         {`${comments.data?.count || 0} Comments`}
       </h4>
