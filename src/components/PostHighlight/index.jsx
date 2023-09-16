@@ -25,32 +25,28 @@ function PostHighlight() {
         </Row>
         <Carousel showStatus={false} autoPlay infiniteLoop showThumbs={false} showArrows={false}>
           {highlightPosts.data?.results.map((post) => (
-            <Row key={post.slug}>
-              <Col md={12}>
-                <Row>
-                  <Col md={4}>
-                    <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-lg-0">
-                      <Image src={post.thumbnail} fluid />
-                    </Link>
-                  </Col>
-                  <Col md={8} className="align-self-center">
-                    <div className="mb-3">
-                      <Link
-                        to={`/category/${post.category.slug}`}
-                        className="fw-semibold text-decoration-none text-muted"
-                      >
-                        {post.category.name}
-                      </Link>
-                      <span className="text-muted">
-                        {` — ${dayjs(post.created_at).format('LL')}`}
-                      </span>
-                    </div>
-                    <h2>
-                      <Link to={`/post/${post.slug}`} className="text-decoration-none text-dark">{post.title}</Link>
-                    </h2>
-                    <p className="text-muted">{post.excerpt}</p>
-                  </Col>
-                </Row>
+            <Row>
+              <Col md={4}>
+                <Link to={`/post/${post.slug}`} className="me-md-5 mb-4 mb-lg-0">
+                  <Image src={post.thumbnail} fluid />
+                </Link>
+              </Col>
+              <Col md={8} className="align-self-center">
+                <div className="mb-3">
+                  <Link
+                    to={`/category/${post.category.slug}`}
+                    className="fw-semibold text-decoration-none text-muted"
+                  >
+                    {post.category.name}
+                  </Link>
+                  <span className="text-muted">
+                    {` — ${dayjs(post.created_at).format('LL')}`}
+                  </span>
+                </div>
+                <h2>
+                  <Link to={`/post/${post.slug}`} className="text-decoration-none text-dark">{post.title}</Link>
+                </h2>
+                <p className="text-muted">{post.excerpt}</p>
               </Col>
             </Row>
           ))}
