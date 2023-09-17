@@ -25,7 +25,7 @@ function Pagination({ page, pageCount }) {
       previousClassName="page-item"
       previousLinkClassName="page-link text-muted"
       nextClassName="page-item"
-      nextLinkClassName="page-link"
+      nextLinkClassName="page-link text-muted"
       breakClassName="page-item"
       breakLinkClassName="page-link text-muted"
       containerClassName="pagination justify-content-center mt-5"

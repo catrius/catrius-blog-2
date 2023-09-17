@@ -25,10 +25,14 @@ export const COMMENT_PROPTYPES = PropTypes.shape({
 
 export const POST_PROPTYPES = PropTypes.shape({
   title: PropTypes.string,
+  slug: PropTypes.string,
+  thumbnail: PropTypes.string,
   category: PropTypes.shape({
     name: PropTypes.string,
     slug: PropTypes.string,
   }),
   created_at: PropTypes.string,
   content: PropTypes.string,
+  excerpt: PropTypes.string,
+  comment_count: PropTypes.number,
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDLE, LOADING } from '@/constants';
+import { IDLE, LOADING, POST_PROPTYPES } from '@/constants';
 import { Link, useSearchParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import dayjs from '@/vendors/dayjs';
@@ -51,6 +51,11 @@ function PostList({ posts, status, pageCount }) {
               <p className="text-muted">
                 {post.excerpt}
               </p>
+              { post.comment_count ? (
+                <div className="text-end text-muted small">
+                  {`${post.comment_count} 💬`}
+                </div>
+              ) : null}
             </div>
           </Col>
         ))}
@@ -62,16 +67,7 @@ function PostList({ posts, status, pageCount }) {
 
 PostList.propTypes = {
   status: PropTypes.string.isRequired,
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    slug: PropTypes.string,
-    thumbnail: PropTypes.string,
-    category: PropTypes.shape({
-      name: PropTypes.string,
-      slug: PropTypes.string,
-    }),
-    created_at: PropTypes.string,
-    excerpt: PropTypes.string,
-  })),
+  posts: PropTypes.arrayOf(POST_PROPTYPES),
   pageCount: PropTypes.number,
 };
 
