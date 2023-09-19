@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments, postComment } from '@/actions/apiActions';
 import {
@@ -12,6 +12,8 @@ function CommentForm({ postId, postSlug }) {
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const comment = useSelector((state) => state.comment);
+  const commenter = localStorage.getItem('commenter');
+
   const submitButtonText = {
     [IDLE]: 'Submit',
     [LOADING]: 'Submitting...',
@@ -21,9 +23,11 @@ function CommentForm({ postId, postSlug }) {
 
   const [formData, setFormData] = useState({
     post: postId,
-    commenter: '',
+    commenter,
     content: '',
   });
+
+  const [editMode, setEditMode] = useState(!formData.commenter);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +41,17 @@ function CommentForm({ postId, postSlug }) {
     const form = e.currentTarget;
 
     if (form.checkValidity()) {
+      localStorage.setItem('commenter', formData.commenter);
       dispatch(postComment(formData));
+    }
+  };
+
+  const handleEditCommenter = () => {
+    if (editMode && formData.commenter) {
+      localStorage.setItem('commenter', formData.commenter);
+      setEditMode(false);
+    } else if (!editMode) {
+      setEditMode(true);
     }
   };
 
@@ -61,18 +75,31 @@ function CommentForm({ postId, postSlug }) {
     <>
       <h4 className="mb-4">Leave a comment</h4>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
+        <InputGroup className="mb-3">
           <Form.Control
             type="text"
             name="commenter"
             placeholder="Your name"
             onChange={handleInputChange}
             required
+            value={formData.commenter}
+            disabled={!editMode}
           />
+          { (commenter !== null && !editMode) && (
+            <Button
+              className="d-inline-block"
+              variant="secondary"
+              type="button"
+              onClick={handleEditCommenter}
+              disabled={!formData.commenter}
+            >
+              ✎
+            </Button>
+          ) }
           <Form.Control.Feedback type="invalid">
             Your name is required.
           </Form.Control.Feedback>
-        </Form.Group>
+        </InputGroup>
         <Form.Group className="mb-3">
           <Form.Control
             as="textarea"
