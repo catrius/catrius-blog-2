@@ -7,6 +7,7 @@ import { commentsSlice } from '@/reducers/apiReducers';
 import Pagination from '@/components/Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '@/constants';
+import './style.scss';
 
 function CommentList({ postSlug }) {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function CommentList({ postSlug }) {
   }, []);
 
   return (
-    <div className="mb-4 pb-4 border-bottom">
+    <div className="comment-list mb-4 pb-4 border-bottom">
       <h4 className="mb-4">
         {`${comments.data?.count || 0} Comments`}
       </h4>
@@ -34,7 +35,7 @@ function CommentList({ postSlug }) {
           <p className="text-muted mb-3">
             {dayjs(comment.created_at).format('LL')}
           </p>
-          <p>{comment.content}</p>
+          <p className="comment-content">{comment.content}</p>
         </div>
       ))}
       <Pagination page={Number(page)} pageCount={pageCount} />
