@@ -7,6 +7,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import PostContent from '@/components/PostDetail/PostContent';
 import CommentList from '@/components/PostDetail/CommentList';
 import CommentForm from '@/components/PostDetail/CommentForm';
+import PostShare from '@/components/PostDetail/PostShare';
 
 function PostDetail({ post, status, isPost }) {
   if (status === LOADING || status === IDLE) {
@@ -19,6 +20,7 @@ function PostDetail({ post, status, isPost }) {
       <Row className="justify-content-center">
         <Col lg={8}>
           <PostContent post={post} isPost={isPost} />
+          <PostShare post={post} />
           { isPost && <CommentList postSlug={post.slug} />}
           { isPost && <CommentForm postId={post.id} postSlug={post.slug} />}
         </Col>
