@@ -19,12 +19,6 @@ function Post() {
     <>
       <Helmet>
         <title>{post.title}</title>
-        <meta name="description" content={post.excerpt || ''} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt || ''} />
-        <meta property="og:image" content={post.thumbnail} />
-        <meta property="og:url" content={`https://catri.us/post/${post.slug}`} />
-        <meta property="og:type" content="article" />
       </Helmet>
       <PostDetail status={postState.status} post={post} />
     </>

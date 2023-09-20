@@ -9,11 +9,11 @@ import { Helmet } from 'react-helmet';
 function Category() {
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const category = useSelector((state) => state.category);
+  const categoryState = useSelector((state) => state.category);
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
-  const pageCount = category.data ? Math.ceil(category.data.count / PAGE_SIZE) : 1;
-  const currentCategory = category.data?.results[0].category;
+  const pageCount = categoryState.data ? Math.ceil(categoryState.data.count / PAGE_SIZE) : 1;
+  const category = categoryState.data?.results[0].category || {};
 
   useEffect(() => {
     dispatch(getCategory({ category: slug, page }));
@@ -22,9 +22,9 @@ function Category() {
   return (
     <>
       <Helmet>
-        <title>{currentCategory.name}</title>
+        <title>{category.name}</title>
       </Helmet>
-      <PostList posts={currentCategory} status={category.status} pageCount={pageCount} />
+      <PostList posts={categoryState.data?.results} status={categoryState.status} pageCount={pageCount} />
     </>
   );
 }
