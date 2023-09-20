@@ -10,7 +10,6 @@ function PostShare({ post }) {
       <h4 className="mb-4">Share</h4>
       <FacebookShareButton
         url={`https://catri.us/post/${post.slug}`}
-        quote={`${post.title} - ${post.excerpt}`}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>

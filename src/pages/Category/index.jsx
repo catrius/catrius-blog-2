@@ -13,6 +13,7 @@ function Category() {
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
   const pageCount = category.data ? Math.ceil(category.data.count / PAGE_SIZE) : 1;
+  const currentCategory = category.data?.results[0].category;
 
   useEffect(() => {
     dispatch(getCategory({ category: slug, page }));
@@ -21,9 +22,9 @@ function Category() {
   return (
     <>
       <Helmet>
-        <title>{category.data?.results[0].category.name}</title>
+        <title>{currentCategory.name}</title>
       </Helmet>
-      <PostList posts={category.data?.results} status={category.status} pageCount={pageCount} />
+      <PostList posts={currentCategory} status={category.status} pageCount={pageCount} />
     </>
   );
 }
