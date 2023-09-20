@@ -3,7 +3,6 @@ import parse from 'html-react-parser';
 import dayjs from '@/vendors/dayjs';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 import { POST_PROPTYPES } from '@/constants';
 
 function PostContent({ post, isPost }) {
@@ -25,7 +24,7 @@ function PostContent({ post, isPost }) {
           </>
         )}
       </div>
-      <div className={classnames('mb-4 pb-4', { 'border-bottom': isPost })}>
+      <div className="mb-4 pb-4 border-bottom">
         { parse(post.content) }
       </div>
     </>
