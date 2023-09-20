@@ -8,7 +8,8 @@ import { Helmet } from 'react-helmet';
 function Post() {
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.post);
+  const postState = useSelector((state) => state.post);
+  const post = postState?.data || {};
 
   useEffect(() => {
     dispatch(getPost(slug));
@@ -17,9 +18,15 @@ function Post() {
   return (
     <>
       <Helmet>
-        <title>{post.data?.title}</title>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt || ''} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || ''} />
+        <meta property="og:image" content={post.thumbnail} />
+        <meta property="og:url" content={`https://catri.us/post/${post.slug}`} />
+        <meta property="og:type" content="article" />
       </Helmet>
-      <PostDetail status={post.status} post={post.data} />
+      <PostDetail status={postState.status} post={post} />
     </>
   );
 }
