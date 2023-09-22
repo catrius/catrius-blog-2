@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '@/components/Layout';
 import '@/styles.scss';
 import { Helmet } from 'react-helmet';
+import './i18n';
 
 const router = createBrowserRouter([
   {

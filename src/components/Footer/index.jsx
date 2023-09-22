@@ -3,8 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import './style.scss';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="py-5 border-top mt-5">
       <Container>
@@ -41,7 +44,7 @@ function Footer() {
             </div>
             <div className="mb-4">
               <p className="text-muted">
-                This website is made with ❤️ by Catrius
+                {t('footer.description')}
               </p>
             </div>
           </Col>

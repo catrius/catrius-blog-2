@@ -1,0 +1,28 @@
+{
+  "home": {
+    "highlights": "Nổi bật"
+  },
+  "post": {
+    "share": "Chia sẻ",
+    "comments": "Bình luận",
+    "comment": {
+      "title": "Viết bình luận",
+      "namePlaceholder": "Tên",
+      "commentPlaceholder": "Nhập bình luận",
+      "submit": {
+        "submit": "Đăng",
+        "submitting": "Đang đăng...",
+        "submitted": "Đã đăng",
+        "failed": "Thất bại. Đăng lại."
+      },
+      "thanks": "Cám ơn bình luận của bạn!",
+      "error": {
+        "nameRequired": "Tên là bắt buộc.",
+        "commentRequired": "Comment không thể để trống."
+      }
+    }
+  },
+  "footer": {
+    "description": "Trang web được viết bởi Catrius ❤"
+  }
+}

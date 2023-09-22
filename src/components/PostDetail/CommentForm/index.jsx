@@ -7,18 +7,20 @@ import {
   FAILED, IDLE, LOADING, SUCCEEDED,
 } from '@/constants';
 import { postCommentSlice } from '@/reducers/apiReducers';
+import { useTranslation } from 'react-i18next';
 
 function CommentForm({ postId, postSlug }) {
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const comment = useSelector((state) => state.comment);
   const commenter = localStorage.getItem('commenter');
+  const { t } = useTranslation();
 
   const submitButtonText = {
-    [IDLE]: 'Submit',
-    [LOADING]: 'Submitting...',
-    [SUCCEEDED]: 'Submitted',
-    [FAILED]: 'Failed. Submit again.',
+    [IDLE]: t('post.comment.submit.submit'),
+    [LOADING]: t('post.comment.submit.submitting'),
+    [SUCCEEDED]: t('post.comment.submit.submitted'),
+    [FAILED]: t('post.comment.submit.failed'),
   };
 
   const [formData, setFormData] = useState({
@@ -67,19 +69,19 @@ function CommentForm({ postId, postSlug }) {
 
   if (comment.status === SUCCEEDED) {
     return (
-      <h4 className="mb-4">Thanks for your comment!</h4>
+      <h4 className="mb-4">{t('post.comment.thanks')}</h4>
     );
   }
 
   return (
     <>
-      <h4 className="mb-4">Leave a comment</h4>
+      <h4 className="mb-4">{t('post.comment.title')}</h4>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <Form.Control
             type="text"
             name="commenter"
-            placeholder="Your name"
+            placeholder={t('post.comment.namePlaceholder')}
             onChange={handleInputChange}
             required
             value={formData.commenter}
@@ -97,7 +99,7 @@ function CommentForm({ postId, postSlug }) {
             </Button>
           ) }
           <Form.Control.Feedback type="invalid">
-            Your name is required.
+            {t('post.comment.error.nameRequired')}
           </Form.Control.Feedback>
         </InputGroup>
         <Form.Group className="mb-3">
@@ -105,12 +107,12 @@ function CommentForm({ postId, postSlug }) {
             as="textarea"
             name="content"
             rows={6}
-            placeholder="Type in your comment"
+            placeholder={t('post.comment.commentPlaceholder')}
             onChange={handleInputChange}
             required
           />
           <Form.Control.Feedback type="invalid">
-            Comment cannot be empty.
+            {t('post.comment.error.commentRequired')}
           </Form.Control.Feedback>
         </Form.Group>
         <div className="text-end">

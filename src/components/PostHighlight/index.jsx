@@ -8,10 +8,12 @@ import dayjs from '@/vendors/dayjs';
 import './style.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+import { useTranslation } from 'react-i18next';
 
 function PostHighlight() {
   const dispatch = useDispatch();
   const highlightPosts = useSelector((state) => state.highlightPosts);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getHighlightPosts());
@@ -21,7 +23,7 @@ function PostHighlight() {
     <div className="post-highlight section pt-5 pb-0">
       <Container>
         <Row className="justify-content-center mb-5">
-          <h2 className="text-center">Highlights</h2>
+          <h2 className="text-center">{t('home.highlights')}</h2>
         </Row>
         <Carousel showStatus={false} autoPlay infiniteLoop showThumbs={false} showArrows={false}>
           {highlightPosts.data?.results.map((post) => (

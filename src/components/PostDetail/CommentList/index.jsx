@@ -8,6 +8,7 @@ import Pagination from '@/components/Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { PAGE_SIZE } from '@/constants';
 import './style.scss';
+import { useTranslation } from 'react-i18next';
 
 function CommentList({ postSlug }) {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function CommentList({ postSlug }) {
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page');
   const pageCount = comments.data ? Math.ceil(comments.data.count / PAGE_SIZE) : 1;
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getComments({ post: postSlug, page }));
@@ -27,7 +29,7 @@ function CommentList({ postSlug }) {
   return (
     <div className="comment-list mb-4 pb-4 border-bottom">
       <h4 className="mb-4">
-        {`${comments.data?.count || 0} Comments`}
+        {`${comments.data?.count || 0} ${t('post.comments')}`}
       </h4>
       {comments.data?.results.map((comment) => (
         <div className="mb-5" key={comment.id}>

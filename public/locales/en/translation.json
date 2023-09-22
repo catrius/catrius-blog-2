@@ -1,0 +1,28 @@
+{
+  "home": {
+    "highlights": "Highlights"
+  },
+  "post": {
+    "share": "Share",
+    "comments": "Comments",
+    "comment": {
+      "title": "Leave a comment",
+      "namePlaceholder": "Your name",
+      "commentPlaceholder": "Type in your comment",
+      "submit": {
+        "submit": "Submit",
+        "submitting": "Submitting...",
+        "submitted": "Submitted",
+        "failed": "Failed. Submit again."
+      },
+      "thanks": "Thanks for your comment!",
+      "error": {
+        "nameRequired": "Your name is required.",
+        "commentRequired": "Comment cannot be empty."
+      }
+    }
+  },
+  "footer": {
+    "description": "This website is made with ❤ by Catrius"
+  }
+}
