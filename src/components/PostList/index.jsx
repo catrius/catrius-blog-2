@@ -31,7 +31,7 @@ function PostList({ posts, status, pageCount }) {
                   fluid
                 />
               </Link>
-              <div className="mb-1">
+              <div className="mb-3">
                 <Link
                   to={`/category/${post.category.slug}`}
                   className="fw-semibold text-decoration-none text-muted"
@@ -43,7 +43,7 @@ function PostList({ posts, status, pageCount }) {
                 </span>
               </div>
               <Link
-                className="d-block text-decoration-none text-dark fw-bold mb-3"
+                className="d-block text-decoration-none text-dark fw-bold mb-1"
                 to={`/post/${post.slug}`}
               >
                 <h5>{post.title}</h5>
