@@ -26,7 +26,7 @@ function LanguageSelect() {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {Object.entries(Languages).map(([key, name]) => (
-          <Dropdown.Item eventKey={key}>{name}</Dropdown.Item>
+          <Dropdown.Item key={key} eventKey={key}>{name}</Dropdown.Item>
         ))}
       </Dropdown.Menu>
     </Dropdown>

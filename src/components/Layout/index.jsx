@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import FacebookChat from '@/components/FacebookChat';
 
 function Layout() {
   return (
@@ -12,6 +13,7 @@ function Layout() {
       <div className="min-vh-100">
         <Outlet />
       </div>
+      <FacebookChat />
       <Footer />
     </>
   );
