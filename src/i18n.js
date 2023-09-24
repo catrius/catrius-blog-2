@@ -9,9 +9,11 @@ i18n
     fallbackLng: 'en',
     lng: navigator.language,
     debug: process.env.NODE_ENV === 'development',
-
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false,
+    },
+    backend: {
+      loadPath: `${process.env.PUBLIC_URL || ''}locales/{{lng}}/{{ns}}.json`,
     },
   });
 
