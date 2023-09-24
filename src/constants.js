@@ -36,3 +36,9 @@ export const POST_PROPTYPES = PropTypes.shape({
   excerpt: PropTypes.string,
   comment_count: PropTypes.number,
 });
+
+// Languages
+export const Languages = {
+  en: 'English',
+  vi: 'Tiếng Việt',
+};

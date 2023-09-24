@@ -7,7 +7,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    lng: navigator.language,
+    lng: localStorage.getItem('language') || navigator.language,
     debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false,
