@@ -13,7 +13,7 @@ function CommentForm({ postId, postSlug }) {
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const comment = useSelector((state) => state.comment);
-  const commenter = localStorage.getItem('commenter');
+  const commenter = localStorage.getItem('commenter') || '';
   const { t } = useTranslation();
 
   const submitButtonText = {
@@ -87,7 +87,7 @@ function CommentForm({ postId, postSlug }) {
             value={formData.commenter}
             disabled={!editMode}
           />
-          { (commenter !== null && !editMode) && (
+          {(commenter !== null && !editMode) && (
             <Button
               className="d-inline-block"
               variant="secondary"
@@ -97,7 +97,7 @@ function CommentForm({ postId, postSlug }) {
             >
               ✎
             </Button>
-          ) }
+          )}
           <Form.Control.Feedback type="invalid">
             {t('post.comment.error.nameRequired')}
           </Form.Control.Feedback>
