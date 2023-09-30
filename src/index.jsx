@@ -9,6 +9,9 @@ import Layout from '@/components/Layout';
 import '@/styles.scss';
 import { Helmet } from 'react-helmet';
 import './i18n';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-60RGJEGLRR');
 
 const router = createBrowserRouter([
   {
